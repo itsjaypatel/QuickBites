@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ZomatoAppApplication {
+public class QuickBitesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZomatoAppApplication.class, args);
+        SpringApplication.run(QuickBitesApplication.class, args);
     }
 
 }

@@ -1,16 +1,40 @@
 INSERT INTO user_entity (first_name, last_name, email, password)
 VALUES
-    ('jay', 'patel', 'jaypatel@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
-    ('john', 'doe', 'johndoe@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
-    ('emma', 'stone', 'emmastone@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
+    ('Born', 'Vita', 'bornvita261@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
+    ('Jay 1781', 'Patel', 'pateljay1781@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('liam', 'smith', 'liamsmith@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('olivia', 'johnson', 'oliviajohnson@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('michael', 'brown', 'michaelbrown@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
+    ('Jay 2k20', 'Patel', 'officialjay2k20@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('ava', 'williams', 'avawilliams@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('ethan', 'jones', 'ethanjones@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
     ('isabella', 'davis', 'isabelladavis@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
-    ('lucas', 'wilson', 'lucaswilson@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..');
+    ('lucas', 'wilson', 'lucaswilson@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..'),
+    ('admin', '', 'admin@gmail.com', '$2a$10$h9dBXtautHgTKq3C5es6aOSBY7nfwcI.lOINXrR/OWGtJqv0C/b..');
 
+INSERT INTO user_entity_roles (user_entity_id, roles)
+VALUES
+    (1, 'CUSTOMER'),
+    (2, 'CUSTOMER'),
+    (3, 'CUSTOMER'),
+    (4, 'CUSTOMER'),
+    (5, 'CUSTOMER'),
+    (6, 'CUSTOMER'),
+    (7, 'CUSTOMER'),
+    (8, 'CUSTOMER'),
+    (9, 'CUSTOMER'),
+    (10,'CUSTOMER'),
+    (1, 'DELIVERY_PARTNER'),
+    (2, 'DELIVERY_PARTNER'),
+    (3, 'DELIVERY_PARTNER'),
+    (4, 'DELIVERY_PARTNER'),
+    (5, 'DELIVERY_PARTNER'),
+    (9, 'DELIVERY_PARTNER'),
+    (10,'DELIVERY_PARTNER'),
+    (6, 'RESTAURANT_PARTNER'),
+    (7, 'RESTAURANT_PARTNER'),
+    (8, 'RESTAURANT_PARTNER'),
+    (11,'ADMIN');
 INSERT INTO wallet (user_id,balance)
 VALUES
     (1, 1000.00),
@@ -22,7 +46,8 @@ VALUES
     (7, 1000.00),
     (8, 1000.00),
     (9, 1000.00),
-    (10,1000.00);
+    (10,1000.00),
+    (11,200000.00);
 
 INSERT INTO customer (user_id, rating, location)
 VALUES

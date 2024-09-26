@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickBites Order Confirmed</title>
+    <title>QuickBites - Order Cancelled</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -33,7 +33,7 @@
             text-align: center;
         }
         .content h1 {
-            color: #333;
+            color: #e74c3c;
             font-size: 24px;
             margin-bottom: 10px;
         }
@@ -86,9 +86,9 @@
 
     <!-- Content Section -->
     <div class="content">
-        <h1>Your Order Has Been Confirmed!</h1>
+        <h1>Order Cancelled</h1>
         <p>Dear <strong th:text="${customerName}"></strong>,</p>
-        <p>We're happy to let you know that your order has been confirmed! Here are the details of your order:</p>
+        <p>We regret to inform you that your order from <strong th:text="${restaurantName}"></strong> has been cancelled.</p>
 
         <!-- Order Details Section -->
         <table class="order-details">
@@ -97,21 +97,18 @@
                 <td th:text="${orderId}">123456</td>
             </tr>
             <tr>
-                <th>Restaurant:</th>
-                <td th:text="${restaurantName}">Pizza Delight</td>
+                <th>Cancellation Reason:</th>
+                <td th:text="${cancellationReason}">Due to high demand</td>
             </tr>
             <tr>
-                <th>Estimated Delivery Time:</th>
-                <td th:text="${deliveryTime}">45 minutes</td>
-            </tr>
-            <tr>
-                <th>Total Amount:</th>
-                <td th:text="${totalAmount}">$25.00</td>
+                <th>Order Amount:</th>
+                <td th:text="${totalOrderAmount}">$25.00</td>
             </tr>
         </table>
 
-        <p>You can track your order's status in the QuickBites app.</p>
-        <p>Thank you for ordering with QuickBites! Enjoy your meal!</p>
+        <p>Order Amount will be refunded into your account within 7 business days.</p>
+        <p>We apologize for the inconvenience. If you have any questions or need assistance, feel free to <a href="https://quickbites.com/support">contact our support team</a>.</p>
+        <p>We hope to serve you again soon!</p>
         <p>Best Regards,<br>QuickBites Team</p>
     </div>
 

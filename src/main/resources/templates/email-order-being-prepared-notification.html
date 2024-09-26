@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickBites Order Confirmed</title>
+    <title>QuickBites Order Being Prepared</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -86,32 +86,32 @@
 
     <!-- Content Section -->
     <div class="content">
-        <h1>Your Order Has Been Confirmed!</h1>
+        <h1>Your Order is Being Prepared!</h1>
         <p>Dear <strong th:text="${customerName}"></strong>,</p>
-        <p>We're happy to let you know that your order has been confirmed! Here are the details of your order:</p>
+        <p>Great news! Your order from <strong th:text="${restaurantName}"></strong> is now being prepared by the restaurant. Our chefs are getting your meal ready with care and precision.</p>
 
         <!-- Order Details Section -->
         <table class="order-details">
             <tr>
                 <th>Order ID:</th>
-                <td th:text="${orderId}">123456</td>
+                <td th:text="${orderId}">null</td>
             </tr>
-            <tr>
-                <th>Restaurant:</th>
-                <td th:text="${restaurantName}">Pizza Delight</td>
-            </tr>
-            <tr>
-                <th>Estimated Delivery Time:</th>
-                <td th:text="${deliveryTime}">45 minutes</td>
-            </tr>
+<!--            <tr>-->
+<!--                <th>Restaurant:</th>-->
+<!--                <td th:text="${restaurantName}">null</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>Food Item:</th>-->
+<!--                <td th:ea=""-->
+<!--            </tr>-->
             <tr>
                 <th>Total Amount:</th>
-                <td th:text="${totalAmount}">$25.00</td>
+                <td th:text="${totalOrderAmount}">$25.00</td>
             </tr>
         </table>
 
-        <p>You can track your order's status in the QuickBites app.</p>
-        <p>Thank you for ordering with QuickBites! Enjoy your meal!</p>
+        <p>We'll let you know as soon as your order is ready for delivery. You can also track the status in the QuickBites app.</p>
+        <p>Thank you for choosing QuickBites! We hope you have a delightful meal!</p>
         <p>Best Regards,<br>QuickBites Team</p>
     </div>
 

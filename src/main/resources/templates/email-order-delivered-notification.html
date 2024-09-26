@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickBites Order Being Prepared</title>
+    <title>QuickBites - Your Order Has Been Delivered</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -86,9 +86,9 @@
 
     <!-- Content Section -->
     <div class="content">
-        <h1>Your Order is Being Prepared!</h1>
+        <h1>Your Order Has Been Delivered!</h1>
         <p>Dear <strong th:text="${customerName}"></strong>,</p>
-        <p>Great news! Your order from <strong th:text="${restaurantName}"></strong> is now being prepared by the restaurant. Our chefs are getting your meal ready with care and precision.</p>
+        <p>Your order from <strong th:text="${restaurantName}"></strong> has been delivered successfully. We hope you enjoy your meal!</p>
 
         <!-- Order Details Section -->
         <table class="order-details">
@@ -97,21 +97,17 @@
                 <td th:text="${orderId}">123456</td>
             </tr>
             <tr>
-                <th>Restaurant:</th>
-                <td th:text="${restaurantName}">Pizza Delight</td>
-            </tr>
-            <tr>
-                <th>Estimated Delivery Time:</th>
-                <td th:text="${deliveryTime}">45 minutes</td>
+                <th>Delivery Partner:</th>
+                <td th:text="${deliveryPartnerName}">John Doe</td>
             </tr>
             <tr>
                 <th>Total Amount:</th>
-                <td th:text="${totalAmount}">$25.00</td>
+                <td th:text="${totalOrderAmount}">$25.00</td>
             </tr>
         </table>
 
-        <p>We'll let you know as soon as your order is ready for delivery. You can also track the status in the QuickBites app.</p>
-        <p>Thank you for choosing QuickBites! We hope you have a delightful meal!</p>
+        <p>We'd love to hear your feedback. Please rate your experience in the QuickBites app!</p>
+        <p>Thank you for choosing QuickBites. We look forward to serving you again soon.</p>
         <p>Best Regards,<br>QuickBites Team</p>
     </div>
 

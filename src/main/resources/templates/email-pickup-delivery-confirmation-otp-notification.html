@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickBites Delivery Confirmation</title>
+    <title>QuickBites Pickup Confirmation</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -54,11 +54,6 @@
             display: inline-block;
             margin-bottom: 20px;
         }
-        .warning {
-            color: #d9534f;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
         .footer {
             background-color: #ff6f61;
             color: white;
@@ -93,18 +88,18 @@
 
     <!-- Content Section -->
     <div class="content">
-        <h1>Delivery Confirmation OTP</h1>
-        <p>Dear <strong th:text="${customerName}"></strong>,</p>
-        <p>Your food is almost at your doorstep! Please use the following OTP to confirm the delivery:</p>
-        <div class="otp-code" th:text="${otpCode}">123456</div>
-        <p class="warning">Please do not share this OTP with anyone. Only share it with the delivery partner after receiving your food!</p>
-        <p>Thank you for choosing QuickBites. We hope you enjoy your meal!</p>
+        <h1>Pickup Confirmation OTP</h1>
+        <p>Dear <strong th:text="${restaurantPartnerName}">Restaurant Partner,</strong>,</p>
+        <p>Share this OTP with Delivery Partner to confirm the pickup</p>
+        <div class="otp-code" th:text="${otp}">654321</div>
+<!--        <p><strong>Important:</strong> Enter this OTP at the restaurant to confirm the order pickup. Please ensure you collect the correct order before leaving.</p>-->
+        <p>Thank you for your prompt service and dedication.</p>
         <p>Best Regards,<br>QuickBites Team</p>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
-        <p>Need help? <a href="https://quickbites.com/support">Contact Support</a></p>
+        <p>Need assistance? <a href="https://quickbites.com/support">Contact Support</a></p>
         <p>© 2024 QuickBites. All rights reserved.</p>
     </div>
 </div>

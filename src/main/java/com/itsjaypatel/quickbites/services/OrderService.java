@@ -1,15 +1,12 @@
 package com.itsjaypatel.quickbites.services;
 
-import com.itsjaypatel.quickbites.entities.Customer;
-import com.itsjaypatel.quickbites.entities.DeliveryPartner;
-import com.itsjaypatel.quickbites.entities.OrderEntity;
-import com.itsjaypatel.quickbites.entities.Restaurant;
+import com.itsjaypatel.quickbites.entities.*;
 
 import java.util.List;
 
 public interface OrderService {
 
-    OrderEntity findById(Long id);
+    OrderEntity findById(String id);
 
     OrderEntity save(OrderEntity orderEntity);
 
@@ -19,5 +16,6 @@ public interface OrderService {
 
     List<OrderEntity> findByRestaurant(Restaurant restaurant);
 
+    OrderEntity generateOrderFromCart(List<CartItem> cartItems);
 
 }

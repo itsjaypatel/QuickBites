@@ -38,4 +38,6 @@ public class DeliveryPartner {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    private Boolean isAvailable;
 }

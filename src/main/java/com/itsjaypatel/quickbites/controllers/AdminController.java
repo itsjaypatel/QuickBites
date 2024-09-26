@@ -18,13 +18,13 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/onboard/deliveryPartner")
-    public ResponseEntity<?> onboardDeliveryPartner(@RequestBody OnboardDeliveryPartnerRequest request){
+    public ResponseEntity<?> onboardDeliveryPartner(@RequestBody OnboardDeliveryPartnerRequest request) {
         adminService.onboardDeliveryPartner(request);
         return ResponseEntity.ok().body("success");
     }
 
     @PostMapping("/onboard/restaurantPartner")
-    public ResponseEntity<?> onboardRestaurantPartner(@RequestBody OnboardRestaurantPartnerRequest request){
+    public ResponseEntity<?> onboardRestaurantPartner(@RequestBody OnboardRestaurantPartnerRequest request) {
         adminService.onboardRestaurantPartner(request);
         return ResponseEntity.ok().body("success");
     }

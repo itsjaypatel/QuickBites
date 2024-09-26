@@ -1,15 +1,15 @@
 package com.itsjaypatel.quickbites.services;
 
 
-import com.itsjaypatel.quickbites.enums.PaymentMethod;
 import com.itsjaypatel.quickbites.dtos.OrderDto;
 import com.itsjaypatel.quickbites.dtos.PaymentDto;
+import com.itsjaypatel.quickbites.enums.PaymentMethod;
 
 public interface PaymentService {
 
     OrderDto checkout();
 
-    PaymentDto makePayment(Long orderId, PaymentMethod paymentMethod);
+    PaymentDto makePayment(String orderId, PaymentMethod paymentMethod);
 
     PaymentDto updatePayment(PaymentDto paymentDto);
 

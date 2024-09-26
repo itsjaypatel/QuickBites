@@ -3,8 +3,6 @@ package com.itsjaypatel.quickbites.services;
 import com.itsjaypatel.quickbites.dtos.FoodItemDto;
 import com.itsjaypatel.quickbites.entities.FoodItem;
 
-import java.util.List;
-
 public interface FoodItemService {
 
     FoodItem save(FoodItem foodItem);
@@ -15,5 +13,9 @@ public interface FoodItemService {
 
     FoodItem findById(Long id);
 
-    List<FoodItem> search(String keyword);
+    void addToFavorites(Long id);
+
+    void removeFromFavorites(Long id);
+
+    void rateFood(Long foodId, Integer rating);
 }

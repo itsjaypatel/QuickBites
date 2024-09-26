@@ -18,7 +18,7 @@ import java.util.Set;
 public class OrderEntity {
 
     @Id
-    private Long id;
+    private String id;
 
     private Double amount;
 

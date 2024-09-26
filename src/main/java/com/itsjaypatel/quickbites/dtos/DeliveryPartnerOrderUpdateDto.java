@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeliveryPartnerOrderUpdateDto {
 
-    private Long orderId;
+    private String orderId;
 
     private OrderStatus orderStatus;
 

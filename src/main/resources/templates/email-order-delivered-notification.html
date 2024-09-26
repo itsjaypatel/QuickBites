@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBites Order Being Prepared</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #ff6f61;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .content h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .content p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .order-details {
+            text-align: left;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .order-details th {
+            text-align: left;
+            padding: 5px;
+        }
+        .order-details td {
+            padding: 5px;
+        }
+        .footer {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 15px;
+            }
+            .content h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <!-- Header Section -->
+    <div class="header">
+        <img src="https://example.com/logo.png" alt="QuickBites Logo">
+        <h2>QuickBites</h2>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Your Order is Being Prepared!</h1>
+        <p>Dear <strong th:text="${customerName}"></strong>,</p>
+        <p>Great news! Your order from <strong th:text="${restaurantName}"></strong> is now being prepared by the restaurant. Our chefs are getting your meal ready with care and precision.</p>
+
+        <!-- Order Details Section -->
+        <table class="order-details">
+            <tr>
+                <th>Order ID:</th>
+                <td th:text="${orderId}">123456</td>
+            </tr>
+            <tr>
+                <th>Restaurant:</th>
+                <td th:text="${restaurantName}">Pizza Delight</td>
+            </tr>
+            <tr>
+                <th>Estimated Delivery Time:</th>
+                <td th:text="${deliveryTime}">45 minutes</td>
+            </tr>
+            <tr>
+                <th>Total Amount:</th>
+                <td th:text="${totalAmount}">$25.00</td>
+            </tr>
+        </table>
+
+        <p>We'll let you know as soon as your order is ready for delivery. You can also track the status in the QuickBites app.</p>
+        <p>Thank you for choosing QuickBites! We hope you have a delightful meal!</p>
+        <p>Best Regards,<br>QuickBites Team</p>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>Need assistance? <a href="https://quickbites.com/support">Contact Support</a></p>
+        <p>© 2024 QuickBites. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

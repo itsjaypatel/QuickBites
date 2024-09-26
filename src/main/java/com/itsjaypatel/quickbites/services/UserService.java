@@ -4,5 +4,5 @@ import com.itsjaypatel.quickbites.entities.UserEntity;
 
 public interface UserService {
 
-    UserEntity currentLoggedUser();
+    UserEntity getUserById(Long id);
 }

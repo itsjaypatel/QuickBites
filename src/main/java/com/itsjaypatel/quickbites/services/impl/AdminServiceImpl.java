@@ -2,12 +2,12 @@ package com.itsjaypatel.quickbites.services.impl;
 
 import com.itsjaypatel.quickbites.dtos.OnboardDeliveryPartnerRequest;
 import com.itsjaypatel.quickbites.dtos.OnboardRestaurantPartnerRequest;
-import com.itsjaypatel.quickbites.exceptions.ResourceConflictException;
 import com.itsjaypatel.quickbites.entities.DeliveryPartner;
 import com.itsjaypatel.quickbites.entities.Restaurant;
 import com.itsjaypatel.quickbites.entities.RestaurantPartner;
 import com.itsjaypatel.quickbites.entities.UserEntity;
 import com.itsjaypatel.quickbites.enums.Role;
+import com.itsjaypatel.quickbites.exceptions.ResourceConflictException;
 import com.itsjaypatel.quickbites.exceptions.ResourceNotFoundException;
 import com.itsjaypatel.quickbites.repositories.DeliveryPartnerRepository;
 import com.itsjaypatel.quickbites.repositories.RestaurantPartnerRepository;
@@ -73,7 +73,7 @@ public class AdminServiceImpl implements AdminService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + request.getUserId()));
         Optional<RestaurantPartner> restaurantPartnerByUserOptional = restaurantPartnerRepository.findByUser(user);
         if (restaurantPartnerByUserOptional.isPresent()) {
-            throw new ResourceConflictException("User with id "+ request.getUserId() + " already restaurant partner");
+            throw new ResourceConflictException("User with id " + request.getUserId() + " already restaurant partner");
         }
         Optional<RestaurantPartner> restaurantPartnerByRegistrationNoOptional = restaurantPartnerRepository
                 .findByRegistrationNo(request.getRegistrationNo());

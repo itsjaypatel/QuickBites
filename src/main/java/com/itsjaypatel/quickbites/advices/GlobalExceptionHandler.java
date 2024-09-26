@@ -1,11 +1,12 @@
 package com.itsjaypatel.quickbites.advices;
 
-import com.itsjaypatel.quickbites.exceptions.ResourceConflictException;
-import com.itsjaypatel.quickbites.exceptions.SignUpException;
-import com.itsjaypatel.quickbites.utils.ApiResponse;
 import com.itsjaypatel.quickbites.exceptions.BadRequestException;
+import com.itsjaypatel.quickbites.exceptions.ResourceConflictException;
 import com.itsjaypatel.quickbites.exceptions.ResourceNotFoundException;
+import com.itsjaypatel.quickbites.exceptions.SignUpException;
 import com.itsjaypatel.quickbites.utils.ApiError;
+import com.itsjaypatel.quickbites.utils.ApiResponse;
+import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,6 +45,14 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST,
                 new ApiError(e.getMessage()));
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<?> badRequest(JwtException e) {
+        ApiResponse<?> apiResponse = new ApiResponse<>(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                new ApiError(e.getMessage()));
+        return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

@@ -1,5 +1,5 @@
 package com.itsjaypatel.quickbites.enums;
 
 public enum PaymentMethod {
-    CASH_ON_DELIVERY,WALLET;
+    CASH_ON_DELIVERY, WALLET
 }

@@ -1,23 +1,22 @@
 package com.itsjaypatel.quickbites.controllers;
 
-import com.itsjaypatel.quickbites.dtos.CustomerDto;
-import com.itsjaypatel.quickbites.dtos.CustomerPaymentRequestDto;
-import com.itsjaypatel.quickbites.dtos.OrderDto;
-import com.itsjaypatel.quickbites.dtos.PaymentDto;
+import com.itsjaypatel.quickbites.dtos.*;
+import com.itsjaypatel.quickbites.services.CatalogService;
 import com.itsjaypatel.quickbites.services.CustomerService;
-import com.itsjaypatel.quickbites.utils.ApiResponse;
-import com.itsjaypatel.zomatoapp.dtos.*;
 import com.itsjaypatel.quickbites.services.PaymentService;
+import com.itsjaypatel.quickbites.utils.ApiResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController()
 @RequestMapping("/user/customer")
 @RequiredArgsConstructor
@@ -25,21 +24,29 @@ public class CustomerController {
 
     private final CustomerService customerService;
     private final PaymentService paymentService;
+    private final CatalogService catalogService;
 
     @GetMapping("/profile")
-    public ResponseEntity<?> viewProfile(){
+    public ResponseEntity<ApiResponse<?>> viewProfile() {
+        log.info("Calling viewProfile");
         CustomerDto customer = customerService.getProfile();
         return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK, customer), HttpStatus.OK);
+    }
+
+    @GetMapping("/viewWallet")
+    public ResponseEntity<ApiResponse<?>> viewWallet() {
+        log.info("Calling viewWallet");
+        WalletDto response = customerService.getWallet();
+        return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK, response), HttpStatus.OK);
     }
 
     @GetMapping("/viewOrders")
     public ResponseEntity<?> viewOrders() {
         List<OrderDto> orders = customerService.viewOrders();
-        return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK,orders), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK, orders), HttpStatus.OK);
     }
 
-
-    @PostMapping("/rateDeliveryPartner/{deliveryPartnerId}/{rating}")
+    @PostMapping("/rate/deliveryPartner/{deliveryPartnerId}/{rating}")
     public ResponseEntity<?> rateDeliveryPartner(
             @PathVariable
             Long deliveryPartnerId,
@@ -47,12 +54,12 @@ public class CustomerController {
             @Valid
             @Min(value = 1)
             @Max(value = 5)
-            Integer rating){
+            Integer rating) {
         customerService.rateDeliveryPartner(deliveryPartnerId, rating);
-        return ResponseEntity.ok().body("success");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/rateFood/{foodItemId}/{rating}")
+    @PostMapping("/rate/food/{foodItemId}/{rating}")
     public ResponseEntity<?> rateFood(
             @PathVariable
             Long foodItemId,
@@ -60,12 +67,12 @@ public class CustomerController {
             @Valid
             @Min(value = 1)
             @Max(value = 5)
-            Integer rating){
+            Integer rating) {
         customerService.rateFood(foodItemId, rating);
-        return ResponseEntity.ok().body("success");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/rateRestaurant/{restaurantId}/{rating}")
+    @PostMapping("/rate/restaurant/{restaurantId}/{rating}")
     public ResponseEntity<?> rateRestaurant(
             @PathVariable
             Long restaurantId,
@@ -73,60 +80,66 @@ public class CustomerController {
             @Valid
             @Min(value = 1)
             @Max(value = 5)
-            Integer rating){
+            Integer rating) {
         customerService.rateRestaurant(restaurantId, rating);
-        return ResponseEntity.ok().body("success");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/addToFavourites/{foodItemId}")
+    @PostMapping("/favourites/add/{foodItemId}")
     public ResponseEntity<?> addToFavourites(
             @PathVariable
-            Long foodItemId){
+            Long foodItemId) {
         customerService.addToFavourites(foodItemId);
-        return ResponseEntity.ok().body("success");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/removeFromFavourites/{foodItemId}")
+    @PostMapping("/favourites/remove/{foodItemId}")
     public ResponseEntity<?> removeFromFavourites(
             @PathVariable
-            Long foodItemId){
+            Long foodItemId) {
         customerService.removeFromFavourites(foodItemId);
-        return ResponseEntity.ok().body("success");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/addToCart/{foodItemId}")
+    @PostMapping("/cart/add/{foodItemId}")
     public ResponseEntity<?> addToCart(
             @PathVariable
-            Long foodItemId){
-        customerService.addToCart(foodItemId);
-        return ResponseEntity.ok().body("success");
+            Long foodItemId) {
+        CartDto cart = customerService.addToCart(foodItemId);
+        return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK, cart), HttpStatus.OK);
     }
 
-    @PostMapping("/removeFromCart/{foodItemId}")
+    @PostMapping("/cart/remove/{foodItemId}")
     public ResponseEntity<?> removeFromCart(
             @PathVariable
-            Long foodItemId){
-        customerService.removeFromCart(foodItemId);
-        return ResponseEntity.ok().body("success");
+            Long foodItemId) {
+        CartDto cart = customerService.removeFromCart(foodItemId);
+        return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK, cart), HttpStatus.OK);
     }
 
     @PostMapping("/checkout")
-    public ResponseEntity<?> checkout(){
+    public ResponseEntity<?> checkout() {
         OrderDto orderEntity = paymentService.checkout();
         return new ResponseEntity<>(
                 new ApiResponse<>(
-                        HttpStatus.CREATED,orderEntity),
+                        HttpStatus.CREATED, orderEntity),
                 HttpStatus.CREATED);
     }
 
     @PostMapping("/pay")
     public ResponseEntity<?> makePayment(
-        @RequestBody
-        CustomerPaymentRequestDto requestDto){
+            @RequestBody
+            CustomerPaymentRequestDto requestDto) {
         PaymentDto payment = paymentService.makePayment(requestDto.getOrderId(), requestDto.getPaymentMethod());
         return new ResponseEntity<>(
                 new ApiResponse<>(
-                        HttpStatus.CREATED,payment),
+                        HttpStatus.CREATED, payment),
                 HttpStatus.CREATED);
+    }
+
+    @PostMapping("/searchFood")
+    public ResponseEntity<?> searchFood(@RequestBody SearchRequestDto requestDto) {
+        var response = catalogService.searchFood(requestDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

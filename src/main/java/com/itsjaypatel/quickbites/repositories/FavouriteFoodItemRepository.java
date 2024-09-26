@@ -1,7 +1,7 @@
 package com.itsjaypatel.quickbites.repositories;
 
-import com.itsjaypatel.quickbites.entities.compositekeys.FavouritesPK;
 import com.itsjaypatel.quickbites.entities.Favourites;
+import com.itsjaypatel.quickbites.entities.compositekeys.FavouritesPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

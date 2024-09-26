@@ -23,6 +23,6 @@ public class Cart {
     @OneToOne
     private Customer customer;
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany
     private Set<CartItem> cartItems;
 }

@@ -2,7 +2,6 @@ package com.itsjaypatel.quickbites.dtos;
 
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data

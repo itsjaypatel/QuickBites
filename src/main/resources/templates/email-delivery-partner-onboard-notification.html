@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to QuickBites!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .header {
+      background-color: #ff6f61;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .header img {
+      max-width: 150px;
+    }
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+    .content h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .content p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .footer {
+      background-color: #ff6f61;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media only screen and (max-width: 600px) {
+      .content {
+        padding: 15px;
+      }
+      .content h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="email-container">
+  <!-- Header Section -->
+  <div class="header">
+    <img src="https://example.com/logo.png" alt="QuickBites Logo">
+    <h2>QuickBites</h2>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <h1>Welcome to QuickBites, <span th:text="${customerName}">Customer</span>!</h1>
+    <p>We're excited to have you on board! Start exploring delicious meals from your favorite restaurants, order easily, and enjoy a seamless delivery experience.</p>
+    <p>To get started, download our app, explore restaurants, and place your first order today.</p>
+    <p>Need any help? Our support team is here for you 24/7.</p>
+    <p>Best Regards,<br>QuickBites Team</p>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p>Need assistance? <a href="https://quickbites.com/support">Contact Support</a></p>
+    <p>© 2024 QuickBites. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,10 @@
 package com.itsjaypatel.quickbites.entities;
 
 import com.itsjaypatel.quickbites.entities.compositekeys.CartItemPK;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +28,4 @@ public class CartItem {
 
 
     private Integer quantity;
-
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
 }

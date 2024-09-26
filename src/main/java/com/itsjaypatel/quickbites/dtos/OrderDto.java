@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class OrderDto {
 
-    private Long id;
+    private String id;
 
     private Double amount;
 

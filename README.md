@@ -51,6 +51,8 @@ Below is the Entity Relationship Diagram (ERD) representing the database structu
 - **Cloud Deployment**: Hosted on AWS Elastic Beanstalk, providing robust scalability and easy deployment.
 - **Database Hosting**: AWS RDS for secure, reliable, and scalable database management.
 
+### Swagger UI Endpoint:
+     http://quickbites-env.ap-south-1.elasticbeanstalk.com/swagger-ui/index.html
 ## Installation
 
 1. **Clone the repository**:
